@@ -1,14 +1,9 @@
 import { NextResponse } from 'next/server';
 import sgMail from '@sendgrid/mail';
-import dotenv from 'dotenv';
 
-// Load the custom environment file
-dotenv.config({ path: './sendgrid.env' });
+sgMail.setApiKey(process.env.SENDGRID_API_KEY);
 
 export async function POST(req) {
-  // Set your SendGrid API Key
-  sgMail.setApiKey(process.env.SENDGRID_API_KEY);
-
   try {
     const { firstname, lastname, email, phone, purpose, message } = await req.json();
 
@@ -45,7 +40,7 @@ export async function POST(req) {
 
     return NextResponse.json({ success: true, message: 'Email sent successfully.' }, { status: 200 });
   } catch (error) {
-    console.error('Error sending email:', error.response ? error.response.body : error);
+    console.error('Error sending email:', error.response ? error.response.body : error.message);
     return NextResponse.json({ success: false, message: 'Failed to send email.' }, { status: 500 });
   }
 }
