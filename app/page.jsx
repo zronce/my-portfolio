@@ -47,7 +47,7 @@ const Home = () => {
         <div className="flex flex-col xl:flex-row items-center justify-between xl:pt-6 xl:pb-20">
           {/* text */}
           <div className="text-center xl:text-left order-2 xl:order-none">
-            <span className="text-lg user-select-none">Web Designer</span>
+            <span className="text-lg user-select-none">Aspiring Web Designer</span>
             <h1 className="h1 mb-5 user-select-none">
               <span
                 className={`h2 ${isTransitioning ? "fade-out" : "fade-in"}`}
@@ -62,7 +62,7 @@ const Home = () => {
                 {currentLanguage}
               </span>
               <br />
-              <span className="text-accent gradient-text">Adrian Kyle</span>
+              <span className="text-accent gradient-text">Kyle Batac</span>
             </h1>
             <p className="max-w-[450px] mb-7 text-white/80 whitespace-pre-wrap user-select-none">
               {text}

@@ -1,46 +1,41 @@
-"use client"
-import CountUp from "react-countup"
+"use client";
+import { useState, useEffect } from "react";
 
-const stats = [
-  {
-    number: 0,
-    text: "Years of Work Experience",
-  },
-  {
-    number: 5,
-    text: "Projects Completed",
-  },
-  {
-    number: 9,
-    text: "Web Dev Technologies",
-  },
-  {
-    number: 3,
-    text: "Graphic Design Tools",
-  },
-]
+const TimeDisplay = () => {
+  const [time, setTime] = useState("");
 
-const Stats = () => {
+  useEffect(() => {
+    const updateTime = () => {
+      const currentTime = new Date();
+      const formattedTime = new Intl.DateTimeFormat(undefined, {
+        hour: "2-digit",
+        minute: "2-digit",
+        second: "2-digit",
+        hour12: true,
+        timeZoneName: "short",
+      }).format(currentTime);
+      setTime(formattedTime);
+    };
+
+    updateTime();
+    const intervalId = setInterval(updateTime, 1000); // Update time every second
+
+    return () => clearInterval(intervalId); // Cleanup on component unmount
+  }, []);
+
   return (
     <section className="pt-2 pb-10 xl:pt-0 xl:pb-6">
       <div className="container mx-auto">
         <div className="flex flex-wrap gap-4 max-w-[80vw] mx-auto xl:max-w-none">
-          {stats.map((item, index) => {
-            return (
-              <div className="flex-1 flex gap-3 items-center justify-center xl:justify-start" key={index}>
-                <CountUp end={item.number} duration={5} delay={2} className="text-3xl xl:text-5xl font-extrabold" />
-                <p className={`${
-                  item.text.length < 15 ? "max-w-[90px]" : "max-w-[130px]"
-                } leading-snug text-white/80`}>
-                  {item.text}
-                </p>
-              </div>
-            )
-          })}
+          <div className="flex-1 flex gap-3 items-center justify-center xl:justify-start">
+            <p className="text-3xl xl:text-5xl font-extrabold text-white font-roboto">
+              {time}
+            </p>
+          </div>
         </div>
-      </div> 
+      </div>
     </section>
-  )
-}
+  );
+};
 
-export default Stats;
+export default TimeDisplay;

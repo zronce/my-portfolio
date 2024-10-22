@@ -48,7 +48,7 @@ const education = {
   icon: "/assets/resume/cap.svg",
   title: "Education",
   description:
-    "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quos.",
+    "Since I was in Senior High School, I have been studying about Computer Technology and now I am a fresh graduate with a degree in Computer Science.",
   items: [
     {
       program: "Bachelor of Science in Computer Science",
@@ -68,7 +68,7 @@ const education = {
 const skills = {
   title: "My Skills",
   description:
-    "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quos.",
+    "This are the tools that I have experience with, not expert level but I can use them.",
   skillList: [
     { name: "HTML", icon: <FaHtml5 /> },
     { name: "CSS", icon: <FaCss3 /> },
@@ -91,9 +91,7 @@ const about = {
     "I'm a fresh graduate with a degree in Computer Science and internship experience as a QA Tester. I have a passion for creating beautiful and functional web application designs. I'm a quick learner and always looking to improve my skills.",
   info: [
     { fieldName: "Name", fieldValue: "Adrian Kyle Batac" },
-    { fieldName: "Email", fieldValue: "batac.ak.bscs@gmail.com" },
     { fieldName: "Age", fieldValue: "24" },
-    { fieldName: "Phone", fieldValue: "09763897279" },
     { fieldName: "Nationality", fieldValue: "Filipino" },
     { fieldName: "Freelance", fieldValue: "Available" },
   ],
@@ -103,7 +101,7 @@ const Resume = () => {
   return (
     <motion.div
       initial={{ opacity: 0 }}
-      animate={{ opacity: 1, transition: { delay: 0.4, duration: 0.6, ease: "easeIn" } }}
+      animate={{ opacity: 1, transition: { delay: 2.4, duration: 0.6, ease: "easeIn" } }}
       className="min-h-[80vh] flex items-center justify-center py-12 xl:py-0"
     >
       <div className="container mx-auto">

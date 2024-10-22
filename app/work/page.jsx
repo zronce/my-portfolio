@@ -14,20 +14,20 @@ import WorkSliderBtns from "@/components/WorkSliderBtns";
 const projects = [
   {
     num: "01",
-    category: "Web Design",
+    category: "KULAYAN Thesis",
     title: "project 1",
-    description: "lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-    stack: [{name: 'html'},{name: 'css'}, {name: 'javascript'}],
+    description: "This thesis aims to develop a learning system about Pampanga's Kulitan Writing System with the help of Machine Learning.",
+    stack: [{name: 'nextjs'},{name: 'typescript'}, {name: 'teachable machine'}],
     image: '/assets/work/thumb1.png',
     live: 'https://kulayan.vercel.app',
-    github: 'github.com'
+    github: 'https://github.com/zronce/kulayan/tree/main/kulitan'
   },
   {
     num: "02",
-    category: "Web Calendar",
+    category: "Coming Soon",
     title: "project 2",
-    description: "lorem ipsum dolor sit amet, consectetur adipiscing.",
-    stack: [{name: 'html'},{name: 'nextjs'}, {name: 'javascript'}],
+    description: "on going project",
+    stack: [{name: ''},{name: ''}, {name: ''}],
     image: '/assets/work/',
     live: '',
     github: 'github.com'
@@ -39,14 +39,14 @@ const Work = () => {
   const handleSlideChange = (swiper) => {
     const currentIndex = swiper.activeIndex;
     setProjects(projects[currentIndex]);
-  }
+  };
 
   return (
     <motion.section 
       initial={{opacity: 0}} 
       animate={{opacity: 1, transition: {delay: 2.4, duration: 0.4, ease: "easeIn"}}} 
-      className="min-h-[80vh] flex flex-col justify-center py-12 xl:px-0">
-      
+      className="min-h-[80vh] flex flex-col justify-center py-12 xl:px-0"
+    >
       <div className="container mx-auto">
         <div className="flex flex-col xl:flex-row xl:gap-[30px]">
 
@@ -57,18 +57,16 @@ const Work = () => {
                 {project.num}
               </div>
               <h2 className="text-[42px] font-bold leading-none text-white group-hover:text-accent transition-all duration-500 capitalize">
-                {project.category} project
+                {project.category}
               </h2>
               <p className="text-white/60">{project.description}</p>
               <ul className="flex gap-4">
-                {project.stack.map((item, index) => {
-                  return (
-                    <li key={index} className="text-accent text-xl">
-                      {item.name}
-                      {index !== project.stack.length - 1 && ","}
-                    </li>
-                  );
-                })}
+                {project.stack.map((item, index) => (
+                  <li key={index} className="text-accent text-xl">
+                    {item.name}
+                    {index !== project.stack.length - 1 && ","}
+                  </li>
+                ))}
               </ul>
               <div className="border border-white/20"></div>
               <div className="flex items-center gap-4">
@@ -108,23 +106,20 @@ const Work = () => {
               spaceBetween={30} 
               slidesPerView={1} 
               className="xl:h-[520px] mb-12"
-              onSlideChange={handleSlideChange}>
-              
-              {projects.map((project, index) => {
-                return (
-                  <SwiperSlide key={index} className="w-full h-full">
-                    <div className="h-[460px] relative group flex justify-center items-center bg-pink-50/20 rounded-lg overflow-hidden">
-                      {/* overlay */}
-                      <div className="absolute top-0 bottom-0 w-full h-full bg-black/10 z-10 rounded-lg"></div>
-                      {/* image */}
-                      <div className="relative w-full h-full">
-                        <Image src={project.image} fill className="object-cover rounded-lg" alt="" />
-                      </div>
+              onSlideChange={handleSlideChange}
+            >
+              {projects.map((project, index) => (
+                <SwiperSlide key={index} className="w-full h-full">
+                  <div className="h-[460px] relative group flex justify-center items-center bg-pink-50/20 rounded-lg overflow-hidden transition-transform duration-300 ease-in-out hover:transform hover:-translate-y-2 hover:rotate-2">
+                    {/* overlay */}
+                    <div className="absolute top-0 bottom-0 w-full h-full bg-black/10 z-10 rounded-lg"></div>
+                    {/* image */}
+                    <div className="relative w-full h-full">
+                      <Image src={project.image} fill className="object-cover rounded-lg" alt="" />
                     </div>
-                  </SwiperSlide>
-                );
-              })}
-
+                  </div>
+                </SwiperSlide>
+              ))}
               {/* slider controls */}
               <WorkSliderBtns containerStyles="flex gap-2 absolute right-0 bottom-[calc(50%_-_22px)] xl:bottom-0 z-20 w-full justify-between xl:w-max xl:justify-none" btnStyles="bg-accent hover:bg-accent-hover text-primary text-[22px] w-[44px] h-[44px] flex justify-center items-center rounded-lg transition-all duration-500" />
             </Swiper>
@@ -136,3 +131,4 @@ const Work = () => {
 };
 
 export default Work;
+

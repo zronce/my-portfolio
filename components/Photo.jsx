@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import * as THREE from "three";
 import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader";
 
@@ -13,7 +13,26 @@ const Photo = () => {
   const zoomSpeed = 0.01;
   const animationSpeedFactor = 0.5; // Adjust this value to slow down the animation
 
+  const [isMobileOrTablet, setIsMobileOrTablet] = useState(false);
+
   useEffect(() => {
+    const checkIfMobileOrTablet = () => window.innerWidth <= 1024; // Mobile and tablet threshold
+    setIsMobileOrTablet(checkIfMobileOrTablet());
+
+    const handleResize = () => {
+      setIsMobileOrTablet(checkIfMobileOrTablet());
+    };
+
+    window.addEventListener("resize", handleResize);
+
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
+
+  useEffect(() => {
+    if (isMobileOrTablet) return; // Don't render the model on mobile or tablet
+
     const mount = mountRef.current;
 
     const scene = new THREE.Scene();
@@ -120,9 +139,9 @@ const Photo = () => {
       window.removeEventListener("resize", handleResize);
       mount.removeChild(renderer.domElement);
     };
-  }, []);
+  }, [isMobileOrTablet]);
 
-  return (
+  return !isMobileOrTablet ? (
     <div
       ref={mountRef}
       style={{
@@ -138,7 +157,7 @@ const Photo = () => {
         opacity: 0.9,
       }}
     />
-  );
+  ) : null; // Return null if it's mobile or tablet
 };
 
 export default Photo;
