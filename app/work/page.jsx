@@ -24,13 +24,13 @@ const projects = [
   },
   {
     num: "02",
-    category: "Coming Soon",
+    category: "Weather Public",
     title: "project 2",
-    description: "on going project",
-    stack: [{name: ''},{name: ''}, {name: ''}],
-    image: '/assets/work/',
-    live: '',
-    github: 'github.com'
+    description: "This project is a weather application that allows users to search for weather information for a specific city.",
+    stack: [{name: 'vite'},{name: 'react'}, {name: 'javascript'}],
+    image: '/assets/work/thumb2.png',
+    live: 'https://weatherpublic.vercel.app',
+    github: 'https://github.com/zronce/weather-app'
   }
 ]
 
