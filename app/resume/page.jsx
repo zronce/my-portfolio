@@ -9,6 +9,7 @@ import {
   SiAdobeillustrator,
   SiAdobephotoshop,
   SiCanva,
+  SiJirasoftware,
 } from "react-icons/si";
 import {
   Tabs,
@@ -70,8 +71,6 @@ const skills = {
   description:
     "This are the tools that I have experience with, not expert level but I can use them.",
   skillList: [
-    { name: "HTML", icon: <FaHtml5 /> },
-    { name: "CSS", icon: <FaCss3 /> },
     { name: "JavaScript", icon: <FaJs /> },
     { name: "React.JS", icon: <FaReact /> },
     { name: "Next.JS", icon: <SiNextdotjs /> },
@@ -82,6 +81,7 @@ const skills = {
     { name: "Illustrator", icon: <SiAdobeillustrator /> },
     { name: "Photoshop", icon: <SiAdobephotoshop /> },
     { name: "Canva", icon: <SiCanva /> },
+    { name: "Jira", icon: <SiJirasoftware /> },
   ],
 };
 
