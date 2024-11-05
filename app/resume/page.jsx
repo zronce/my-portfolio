@@ -10,6 +10,8 @@ import {
   SiAdobephotoshop,
   SiCanva,
   SiJirasoftware,
+  SiPhp,
+  SiMysql,
 } from "react-icons/si";
 import {
   Tabs,
@@ -82,6 +84,8 @@ const skills = {
     { name: "Photoshop", icon: <SiAdobephotoshop /> },
     { name: "Canva", icon: <SiCanva /> },
     { name: "Jira", icon: <SiJirasoftware /> },
+    { name: "PHP", icon: <SiPhp /> },
+    { name: "MySQL", icon: <SiMysql /> },
   ],
 };
 
