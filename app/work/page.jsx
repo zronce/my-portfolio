@@ -49,7 +49,7 @@ const figmaDesigns = [
     category: "Under Construction",
     title: "figma 1",
     description: "",
-    stack: [{ name: 'FIGMA DESIGN' }],
+    stack: [{ name: 'DESIGNS' }],
     image: '/assets/work/',
     live: '',
     github: ''
@@ -159,7 +159,7 @@ const Work = () => {
         </div>
       </motion.section>
       <h2 className="text-3xl xl:text-4xl font-bold text-center text-white mb-8">
-            FIGMA PROJECTS
+            DESIGN PROJECTS
           </h2>
       {/* Scroll Indicator */}
       <motion.div
