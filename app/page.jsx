@@ -8,7 +8,7 @@ import Photo from "@/components/Photo";
 import Stats from "@/components/Stats";
 
 const Home = () => {
-  const text = "I'm a fresh graduate of Bachelor of Science in Computer Science with a passion for creating elegant digital experiences.";
+  const text = "I'm a fresh graduate of Bachelor of Science in Computer Science with a passion for QA Testing and creating elegant digital experiences.";
 
   const languages = [
     "Hello, I'm",
@@ -47,7 +47,7 @@ const Home = () => {
         <div className="flex flex-col xl:flex-row items-center justify-between xl:pt-6 xl:pb-20">
           {/* text */}
           <div className="text-center xl:text-left order-2 xl:order-none">
-            <span className="text-lg user-select-none">Aspiring Web Designer</span>
+            <span className="text-lg user-select-none">QA Tester & Web Designer</span>
             <h1 className="h1 mb-5 user-select-none">
               <span
                 className={`h2 ${isTransitioning ? "fade-out" : "fade-in"}`}
