@@ -9,6 +9,7 @@ import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/comp
 import Link from "next/link";
 import Image from "next/image";
 import WorkSliderBtns from "@/components/WorkSliderBtns";
+import Head from "next/head";
 
 const projects = [
   {
@@ -48,7 +49,7 @@ const figmaDesigns = [
     num: "01",
     category: "SOLARMADE",
     title: "figma 1",
-    description: "SolarMade is a leading provider of sustainable solar energy solutions, dedicated to harnessing the power of the sun to create clean, renewable energy for homes and businesses. With a focus on innovation, efficiency, and environmental responsibility, we offer high-quality solar panels and customized energy systems that help reduce carbon footprints and lower energy costs. Trust SolarMade to power your future with green energy solutions that are both reliable and cost-effective.",
+    description: "SolarMade is a leading provider of sustainable solar energy solutions, dedicated to harnessing the power of the sun to create clean, renewable energy for homes and businesses.",
     stack: [{ name: 'Figma' }],
     note: "Click the image to view the full design",
     image: '/assets/work/thumbd2.png',
@@ -58,7 +59,7 @@ const figmaDesigns = [
     num: "02",
     category: "MANGAN",
     title: "figma 2",
-    description: "Mangan is a dynamic and modern brand specializing in authentic Kapampangan cuisine. With a commitment to quality and tradition, we bring the rich flavors of Pampanga to every dish, offering a unique dining experience that celebrates local ingredients and time-honored recipes. Whether you’re seeking a taste of home or exploring new culinary delights, Mangan offers a memorable journey into the heart of Filipino food culture.",
+    description: "Mangan is a dynamic and modern brand specializing in authentic Kapampangan cuisine. With a commitment to quality and tradition, we bring the rich flavors of Pampanga to every dish.",
     stack: [{ name: 'Figma' }],
     note: "Click the image to view the full design",
     image: '/assets/work/thumbd1.png',
@@ -102,9 +103,22 @@ const Work = () => {
     setSelectedImage("");
   };
 
+  // Preloading Figma design images
+  const preloadImages = figmaDesigns.map((design) => design.live);
+
   return (
     <>
-    
+      <Head>
+        {preloadImages.map((imageSrc, index) => (
+          <link
+            key={index}
+            rel="preload"
+            href={imageSrc}
+            as="image"
+          />
+        ))}
+      </Head>
+
       {/* Original Work Section */}
       <motion.section
         initial={{ opacity: 0 }}
@@ -200,20 +214,19 @@ const Work = () => {
         </motion.div>
       </motion.section>
 
-      <h2 className="text-2xl xl:text-3xl font-bold text-center text-white mb-6" iinitial={{ opacity: 0, y: -10 }}
-          animate={{ opacity: 1, y: 0, transition: { delay: 3, duration: 0.4, ease: "easeInOut" } }}>
+      <h2 className="text-2xl xl:text-3xl font-bold text-center text-white mb-6">
         Personal Web Design Projects
       </h2>
 
       {/* New Figma Designs Section */}
       <motion.section
         initial={{ opacity: 0 }}
-        animate={{ opacity: 1, transition: { delay: 3.4, duration: 0.4, ease: "easeIn" } }}
-        className="min-h-[80vh] flex flex-col justify-center py-8 xl:px-0"
+        animate={{ opacity: 1, transition: { delay: 2.4, duration: 0.4, ease: "easeIn" } }}
+        className="min-h-[60vh] flex flex-col justify-center py-8 xl:px-0"
       >
         <div className="container mx-auto">
           <div className="flex flex-col xl:flex-row xl:gap-[20px]">
-            {/* Figma Info Section */}
+            {/* Figma Design Info Section */}
             <div className="w-full xl:w-[50%] xl:h-[420px] flex flex-col xl:justify-between order-2 xl:order-none">
               <div className="flex flex-col gap-[20px] h-[50%]">
                 <div className="text-7xl leading-none font-extrabold text-transparent text-outline">
@@ -231,13 +244,12 @@ const Work = () => {
                     </li>
                   ))}
                 </ul>
-                <p className="text-white/70 text-lg mt-4 italic">
-                  Note: {figma.note}
-                </p>
+                <p className="text-white/70">{figma.note}</p>
+                <div className="border border-white/20"></div>
               </div>
             </div>
 
-            {/* Figma Slider Section */}
+            {/* Figma Design Slider Section */}
             <div className="w-full xl:w-[50%]">
               <Swiper
                 spaceBetween={20}
@@ -247,51 +259,46 @@ const Work = () => {
                 className="xl:h-[460px] mb-10"
                 onSlideChange={handleFigmaSlideChange}
               >
-                {figmaDesigns.map((design, index) => (
+                {figmaDesigns.map((figma, index) => (
                   <SwiperSlide key={index} className="w-full h-full">
-                    <div
-                      className="h-[420px] relative flex justify-center items-center bg-blue-50/20 rounded-lg overflow-hidden transition-transform duration-300 ease-in-out cursor-pointer"
-                      onClick={() => openModal(design.live)}
-                    >
+                    <div className="h-[420px] relative flex justify-center items-center bg-pink-50/20 rounded-lg overflow-hidden transition-transform duration-300 ease-in-out">
                       <div className="absolute top-0 bottom-0 w-full h-full bg-black/10 z-10 rounded-lg"></div>
                       <div className="relative w-full h-full">
-                        <Image src={design.image} fill className="object-cover rounded-lg" alt="" loading="eager" priority />
+                        <Image src={figma.image} fill className="object-cover rounded-lg" alt="" />
                       </div>
                     </div>
                   </SwiperSlide>
                 ))}
-                <WorkSliderBtns containerStyles="flex gap-2 absolute right-0 bottom-[calc(50%_-_22px)] xl:bottom-0 z-20 w-full justify-between xl:w-max xl:justify-none" btnStyles="bg-accent text-primary text-[20px] w-[40px] h-[40px] flex justify-center items-center rounded-lg transition-all duration-500" />
               </Swiper>
             </div>
           </div>
         </div>
       </motion.section>
 
- {/* Modal */}
-{modalOpen && (
-  <div className="fixed inset-0 bg-black/50 z-50 flex justify-center items-center overflow-auto">
-    <div className="relative bg-white rounded-lg shadow-lg max-w-full sm:max-w-3xl w-full p-4 max-h-[90vh] overflow-auto">
-      <button
-        className="absolute top-4 right-4 text-white text-3xl font-bold z-50 bg-gray-800 hover:bg-gray-600 rounded-full p-2 transition duration-300"
-        onClick={closeModal}
-      >
-        ×
-      </button>
-      <div className="relative w-full h-full">
-        <Image 
-          src={selectedImage} 
-          alt="Preview" 
-          layout="intrinsic" 
-          width={1000} 
-          height={1000} 
-          className="object-contain rounded-lg max-w-full max-h-[150vh]"
-        />
-      </div>
-    </div>
-  </div>
-)}
-
-
+      {/* Modal */}
+      {modalOpen && (
+        <div className="fixed inset-0 bg-black/50 z-50 flex justify-center items-center overflow-auto">
+          <div className="relative bg-white rounded-lg shadow-lg max-w-full sm:max-w-3xl w-full p-4 max-h-[90vh] overflow-auto">
+            <button
+              className="absolute top-4 right-4 text-white text-3xl font-bold z-50 bg-gray-800 hover:bg-gray-600 rounded-full p-2 transition duration-300"
+              onClick={closeModal}
+            >
+              ×
+            </button>
+            <div className="relative w-full h-full">
+              <Image
+                src={selectedImage}
+                alt="Preview"
+                layout="intrinsic"
+                width={1000}
+                height={1000}
+                className="object-contain rounded-lg max-w-full max-h-[150vh]"
+                priority
+              />
+            </div>
+          </div>
+        </div>
+      )}
     </>
   );
 };
