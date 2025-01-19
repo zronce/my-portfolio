@@ -157,7 +157,7 @@ const Photo = () => {
         opacity: 0.9,
       }}
     />
-  ) : null; // Return null if it's mobile or tablet
+  ) : null; // Return null if it's mobile or tablet 
 };
 
 export default Photo;

@@ -1,16 +1,15 @@
 "use client";
 import { FaHtml5, FaCss3, FaJs, FaReact } from "react-icons/fa";
 import {
-  SiTailwindcss,
+
   SiNextdotjs,
-  SiVite,
   SiFigma,
   SiFramer,
-  SiAdobeillustrator,
   SiAdobephotoshop,
   SiCanva,
   SiJirasoftware,
-  SiPhp,
+  SiPostman,
+  SiPostgresql,
   SiMysql,
 } from "react-icons/si";
 import {
@@ -71,20 +70,17 @@ const education = {
 const skills = {
   title: "My Skills",
   description:
-    "This are the tools that I have experience with, not expert level but I can use them.",
+    "These are the technologies that I have experience with, not expert level but I can use them.",
   skillList: [
-    { name: "JavaScript", icon: <FaJs /> },
     { name: "React.JS", icon: <FaReact /> },
     { name: "Next.JS", icon: <SiNextdotjs /> },
-    { name: "Vite", icon: <SiVite /> },
-    { name: "Tailwind CSS", icon: <SiTailwindcss /> },
     { name: "Figma", icon: <SiFigma /> },
     { name: "Framer", icon: <SiFramer /> },
-    { name: "Illustrator", icon: <SiAdobeillustrator /> },
     { name: "Photoshop", icon: <SiAdobephotoshop /> },
     { name: "Canva", icon: <SiCanva /> },
     { name: "Jira", icon: <SiJirasoftware /> },
-    { name: "PHP", icon: <SiPhp /> },
+    { name: "Postman", icon: <SiPostman /> },
+    { name: "PostgreSQL", icon: <SiPostgresql /> },
     { name: "MySQL", icon: <SiMysql /> },
   ],
 };
@@ -95,7 +91,7 @@ const about = {
     "I'm a fresh graduate with a degree in Computer Science and internship experience as a QA Tester. I have a passion for creating beautiful and functional web application designs. I'm a quick learner and always looking to improve my skills.",
   info: [
     { fieldName: "Name", fieldValue: "Adrian Kyle Batac" },
-    { fieldName: "Age", fieldValue: "24" },
+    { fieldName: "Age", fieldValue: "25" },
     { fieldName: "Nationality", fieldValue: "Filipino" },
     { fieldName: "Freelance", fieldValue: "Available" },
   ],

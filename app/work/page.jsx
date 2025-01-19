@@ -46,19 +46,41 @@ const projects = [
 const figmaDesigns = [
   {
     num: "01",
-    category: "Under Construction",
+    category: "SOLARMADE",
     title: "figma 1",
-    description: "",
-    stack: [{ name: 'DESIGNS' }],
-    image: '/assets/work/',
-    live: '',
-    github: ''
+    description: "SolarMade is a leading provider of sustainable solar energy solutions, dedicated to harnessing the power of the sun to create clean, renewable energy for homes and businesses. With a focus on innovation, efficiency, and environmental responsibility, we offer high-quality solar panels and customized energy systems that help reduce carbon footprints and lower energy costs. Trust SolarMade to power your future with green energy solutions that are both reliable and cost-effective.",
+    stack: [{ name: 'Figma' }],
+    note: "Click the image to view the full design",
+    image: '/assets/work/thumbd2.png',
+    live: '/assets/work/solarmade.png', // Full image for preview
+  },
+  {
+    num: "02",
+    category: "MANGAN",
+    title: "figma 2",
+    description: "Mangan is a dynamic and modern brand specializing in authentic Kapampangan cuisine. With a commitment to quality and tradition, we bring the rich flavors of Pampanga to every dish, offering a unique dining experience that celebrates local ingredients and time-honored recipes. Whether you’re seeking a taste of home or exploring new culinary delights, Mangan offers a memorable journey into the heart of Filipino food culture.",
+    stack: [{ name: 'Figma' }],
+    note: "Click the image to view the full design",
+    image: '/assets/work/thumbd1.png',
+    live: '/assets/work/mangan.png', // Full image for preview
+  },
+  {
+    num: "03",
+    category: "KapeCo.",
+    title: "figma 3",
+    description: "KapeCo. crafts premium coffee, blending rich flavors and quality to inspire and energize with every cup.",
+    stack: [{ name: 'Figma' }],
+    note: "Click the image to view the full design",
+    image: '/assets/work/thumbd3.png',
+    live: '/assets/work/KapeCo.png', // Full image for preview
   }
 ];
 
 const Work = () => {
   const [project, setProjects] = useState(projects[0]);
   const [figma, setFigma] = useState(figmaDesigns[0]);
+  const [modalOpen, setModalOpen] = useState(false);
+  const [selectedImage, setSelectedImage] = useState("");
 
   const handleSlideChange = (swiper) => {
     const currentIndex = swiper.activeIndex;
@@ -70,42 +92,53 @@ const Work = () => {
     setFigma(figmaDesigns[currentIndex]);
   };
 
+  const openModal = (image) => {
+    setSelectedImage(image);
+    setModalOpen(true);
+  };
+
+  const closeModal = () => {
+    setModalOpen(false);
+    setSelectedImage("");
+  };
+
   return (
     <>
+    
       {/* Original Work Section */}
       <motion.section
         initial={{ opacity: 0 }}
         animate={{ opacity: 1, transition: { delay: 2.4, duration: 0.4, ease: "easeIn" } }}
-        className="min-h-[80vh] flex flex-col justify-center py-12 xl:px-0"
+        className="min-h-[80vh] flex flex-col justify-center py-8 xl:px-0"
       >
         <div className="container mx-auto">
-          <div className="flex flex-col xl:flex-row xl:gap-[30px]">
+          <div className="flex flex-col xl:flex-row xl:gap-[20px]">
             {/* Project Info Section */}
-            <div className="w-full xl:w-[50%] xl:h-[460px] flex flex-col xl:justify-between order-2 xl:order-none">
-              <div className="flex flex-col gap-[30px] h-[50%]">
-                <div className="text-8xl leading-none font-extrabold text-transparent text-outline">
+            <div className="w-full xl:w-[50%] xl:h-[420px] flex flex-col xl:justify-between order-2 xl:order-none">
+              <div className="flex flex-col gap-[20px] h-[50%]">
+                <div className="text-7xl leading-none font-extrabold text-transparent text-outline">
                   {project.num}
                 </div>
-                <h2 className="text-[42px] font-bold leading-none text-white transition-all duration-500 capitalize">
+                <h2 className="text-[36px] font-bold leading-none text-white transition-all duration-500 capitalize">
                   {project.category}
                 </h2>
-                <p className="text-white/60">{project.description}</p>
-                <ul className="flex gap-4">
+                <p className="text-white/70">{project.description}</p>
+                <ul className="flex gap-3">
                   {project.stack.map((item, index) => (
-                    <li key={index} className="text-accent text-xl">
+                    <li key={index} className="text-accent text-lg">
                       {item.name}
                       {index !== project.stack.length - 1 && ","}
                     </li>
                   ))}
                 </ul>
                 <div className="border border-white/20"></div>
-                <div className="flex items-center gap-4">
+                <div className="flex items-center gap-3">
                   {project.live && (
                     <Link href={project.live}>
                       <TooltipProvider delayDuration={100}>
                         <Tooltip>
-                          <TooltipTrigger className="w-[70px] h-[70px] rounded-full bg-white/5 flex justify-center items-center group transition-all duration-500">
-                            <BsArrowUpRight className="text-white text-3xl" />
+                          <TooltipTrigger className="w-[60px] h-[60px] rounded-full bg-white/5 flex justify-center items-center group transition-all duration-500">
+                            <BsArrowUpRight className="text-white text-2xl" />
                           </TooltipTrigger>
                           <TooltipContent>
                             <p>Live project</p>
@@ -118,8 +151,8 @@ const Work = () => {
                     <Link href={project.github}>
                       <TooltipProvider delayDuration={100}>
                         <Tooltip>
-                          <TooltipTrigger className="w-[70px] h-[70px] rounded-full bg-white/5 flex justify-center items-center group transition-all duration-500">
-                            <BsGithub className="text-white text-3xl" />
+                          <TooltipTrigger className="w-[60px] h-[60px] rounded-full bg-white/5 flex justify-center items-center group transition-all duration-500">
+                            <BsGithub className="text-white text-2xl" />
                           </TooltipTrigger>
                           <TooltipContent>
                             <p>Github repo</p>
@@ -135,16 +168,16 @@ const Work = () => {
             {/* Slider Section */}
             <div className="w-full xl:w-[50%]">
               <Swiper
-                spaceBetween={30}
+                spaceBetween={20}
                 slidesPerView={1}
                 speed={600}
                 preloadImages
-                className="xl:h-[520px] mb-12"
+                className="xl:h-[460px] mb-10"
                 onSlideChange={handleSlideChange}
               >
                 {projects.map((project, index) => (
                   <SwiperSlide key={index} className="w-full h-full">
-                    <div className="h-[460px] relative flex justify-center items-center bg-pink-50/20 rounded-lg overflow-hidden transition-transform duration-300 ease-in-out">
+                    <div className="h-[420px] relative flex justify-center items-center bg-pink-50/20 rounded-lg overflow-hidden transition-transform duration-300 ease-in-out">
                       <div className="absolute top-0 bottom-0 w-full h-full bg-black/10 z-10 rounded-lg"></div>
                       <div className="relative w-full h-full">
                         <Image src={project.image} fill className="object-cover rounded-lg" alt="" loading="eager" priority />
@@ -152,66 +185,74 @@ const Work = () => {
                     </div>
                   </SwiperSlide>
                 ))}
-                <WorkSliderBtns containerStyles="flex gap-2 absolute right-0 bottom-[calc(50%_-_22px)] xl:bottom-0 z-20 w-full justify-between xl:w-max xl:justify-none" btnStyles="bg-accent text-primary text-[22px] w-[44px] h-[44px] flex justify-center items-center rounded-lg transition-all duration-500" />
+                <WorkSliderBtns containerStyles="flex gap-2 absolute right-0 bottom-[calc(50%_-_22px)] xl:bottom-0 z-20 w-full justify-between xl:w-max xl:justify-none" btnStyles="bg-accent text-primary text-[20px] w-[40px] h-[40px] flex justify-center items-center rounded-lg transition-all duration-500" />
               </Swiper>
             </div>
           </div>
         </div>
+        {/* Scroll Indicator */}
+        <motion.div
+          className="flex justify-center py-3"
+          initial={{ opacity: 0, y: -10 }}
+          animate={{ opacity: 1, y: 0, transition: { delay: 3, duration: 0.4, ease: "easeInOut" } }}
+        >
+          <BsArrowDown className="text-white text-2xl animate-bounce" />
+        </motion.div>
       </motion.section>
-      <h2 className="text-3xl xl:text-4xl font-bold text-center text-white mb-8">
-            DESIGN PROJECTS
-          </h2>
-      {/* Scroll Indicator */}
-      <motion.div
-        className="flex justify-center py-4"
-        initial={{ opacity: 0, y: -10 }}
-        animate={{ opacity: 1, y: 0, transition: { delay: 3, duration: 0.4, ease: "easeInOut" } }}
-      >
-        <BsArrowDown className="text-white text-3xl animate-bounce" />
-      </motion.div>
+
+      <h2 className="text-2xl xl:text-3xl font-bold text-center text-white mb-6" iinitial={{ opacity: 0, y: -10 }}
+          animate={{ opacity: 1, y: 0, transition: { delay: 3, duration: 0.4, ease: "easeInOut" } }}>
+        Personal Web Design Projects
+      </h2>
 
       {/* New Figma Designs Section */}
       <motion.section
         initial={{ opacity: 0 }}
         animate={{ opacity: 1, transition: { delay: 3.4, duration: 0.4, ease: "easeIn" } }}
-        className="min-h-[80vh] flex flex-col justify-center py-12 xl:px-0"
+        className="min-h-[80vh] flex flex-col justify-center py-8 xl:px-0"
       >
         <div className="container mx-auto">
-          <div className="flex flex-col xl:flex-row xl:gap-[30px]">
+          <div className="flex flex-col xl:flex-row xl:gap-[20px]">
             {/* Figma Info Section */}
-            <div className="w-full xl:w-[50%] xl:h-[460px] flex flex-col xl:justify-between order-2 xl:order-none">
-              <div className="flex flex-col gap-[30px] h-[50%]">
-                <div className="text-8xl leading-none font-extrabold text-transparent text-outline">
+            <div className="w-full xl:w-[50%] xl:h-[420px] flex flex-col xl:justify-between order-2 xl:order-none">
+              <div className="flex flex-col gap-[20px] h-[50%]">
+                <div className="text-7xl leading-none font-extrabold text-transparent text-outline">
                   {figma.num}
                 </div>
-                <h2 className="text-[42px] font-bold leading-none text-white transition-all duration-500 capitalize">
+                <h2 className="text-[36px] font-bold leading-none text-white transition-all duration-500 capitalize">
                   {figma.category}
                 </h2>
-                <p className="text-white/60">{figma.description}</p>
-                <ul className="flex gap-4">
+                <p className="text-white/70">{figma.description}</p>
+                <ul className="flex gap-3">
                   {figma.stack.map((item, index) => (
-                    <li key={index} className="text-accent text-xl">
+                    <li key={index} className="text-accent text-lg">
                       {item.name}
                       {index !== figma.stack.length - 1 && ","}
                     </li>
                   ))}
                 </ul>
+                <p className="text-white/70 text-lg mt-4 italic">
+                  Note: {figma.note}
+                </p>
               </div>
             </div>
 
             {/* Figma Slider Section */}
             <div className="w-full xl:w-[50%]">
               <Swiper
-                spaceBetween={30}
+                spaceBetween={20}
                 slidesPerView={1}
                 speed={600}
                 preloadImages
-                className="xl:h-[520px] mb-12"
+                className="xl:h-[460px] mb-10"
                 onSlideChange={handleFigmaSlideChange}
               >
                 {figmaDesigns.map((design, index) => (
                   <SwiperSlide key={index} className="w-full h-full">
-                    <div className="h-[460px] relative flex justify-center items-center bg-blue-50/20 rounded-lg overflow-hidden transition-transform duration-300 ease-in-out">
+                    <div
+                      className="h-[420px] relative flex justify-center items-center bg-blue-50/20 rounded-lg overflow-hidden transition-transform duration-300 ease-in-out cursor-pointer"
+                      onClick={() => openModal(design.live)}
+                    >
                       <div className="absolute top-0 bottom-0 w-full h-full bg-black/10 z-10 rounded-lg"></div>
                       <div className="relative w-full h-full">
                         <Image src={design.image} fill className="object-cover rounded-lg" alt="" loading="eager" priority />
@@ -219,12 +260,38 @@ const Work = () => {
                     </div>
                   </SwiperSlide>
                 ))}
-                <WorkSliderBtns containerStyles="flex gap-2 absolute right-0 bottom-[calc(50%_-_22px)] xl:bottom-0 z-20 w-full justify-between xl:w-max xl:justify-none" btnStyles="bg-accent text-primary text-[22px] w-[44px] h-[44px] flex justify-center items-center rounded-lg transition-all duration-500" />
+                <WorkSliderBtns containerStyles="flex gap-2 absolute right-0 bottom-[calc(50%_-_22px)] xl:bottom-0 z-20 w-full justify-between xl:w-max xl:justify-none" btnStyles="bg-accent text-primary text-[20px] w-[40px] h-[40px] flex justify-center items-center rounded-lg transition-all duration-500" />
               </Swiper>
             </div>
           </div>
         </div>
       </motion.section>
+
+ {/* Modal */}
+{modalOpen && (
+  <div className="fixed inset-0 bg-black/50 z-50 flex justify-center items-center overflow-auto">
+    <div className="relative bg-white rounded-lg shadow-lg max-w-full sm:max-w-3xl w-full p-4 max-h-[90vh] overflow-auto">
+      <button
+        className="absolute top-4 right-4 text-white text-3xl font-bold z-50 bg-gray-800 hover:bg-gray-600 rounded-full p-2 transition duration-300"
+        onClick={closeModal}
+      >
+        ×
+      </button>
+      <div className="relative w-full h-full">
+        <Image 
+          src={selectedImage} 
+          alt="Preview" 
+          layout="intrinsic" 
+          width={1000} 
+          height={1000} 
+          className="object-contain rounded-lg max-w-full max-h-[150vh]"
+        />
+      </div>
+    </div>
+  </div>
+)}
+
+
     </>
   );
 };

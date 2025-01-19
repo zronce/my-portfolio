@@ -8,7 +8,7 @@ import Photo from "@/components/Photo";
 import Stats from "@/components/Stats";
 
 const Home = () => {
-  const text = "I'm a fresh graduate of Bachelor of Science in Computer Science with a passion for QA Testing and creating elegant digital experiences.";
+  const text = "I'm a fresh graduate of Bachelor of Science in Computer Science with a passion for QA Testing and creating elegant figma web designs.";
 
   const languages = [
     "Hello, I'm",
@@ -62,7 +62,7 @@ const Home = () => {
                 {currentLanguage}
               </span>
               <br />
-              <span className="text-accent gradient-text">Kyle Batac</span>
+              <span className="text-accent gradient-text">KYLE BATAC</span>
             </h1>
             <p className="max-w-[450px] mb-7 text-white/80 whitespace-pre-wrap user-select-none">
               {text}
@@ -70,7 +70,7 @@ const Home = () => {
             {/* buttons and socials */}
             <div className="flex flex-col xl:flex-row items-center gap-6">
               {/* Download Resume button */}
-              <a href="/assets/res.pdf" download>
+              <a href="/assets/Batac-AdrianKyle_RESUME-p.pdf" download>
                 <Button
                   variant="outline"
                   size="lg"
