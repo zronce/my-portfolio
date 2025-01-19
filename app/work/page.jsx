@@ -52,7 +52,7 @@ const figmaDesigns = [
     stack: [{ name: 'Figma' }],
     note: "Click the image to view the full design",
     image: '/assets/work/thumbd2.png',
-    live: '/assets/work/solarmade.png', // Full image for preview
+    live: '/assets/work/Solarmade.png', // Full image for preview
   },
   {
     num: "02",
