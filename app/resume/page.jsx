@@ -5,12 +5,11 @@ import {
   SiNextdotjs,
   SiFigma,
   SiFramer,
-  SiAdobephotoshop,
   SiCanva,
   SiJirasoftware,
   SiPostman,
   SiPostgresql,
-  SiMysql,
+
 } from "react-icons/si";
 import {
   Tabs,
@@ -72,16 +71,14 @@ const skills = {
   description:
     "These are the technologies that I have experience with, not expert level but I can use them.",
   skillList: [
+    { name: "Jira", icon: <SiJirasoftware /> },
+    { name: "PostgreSQL", icon: <SiPostgresql /> },
+    { name: "Postman", icon: <SiPostman /> },
     { name: "React.JS", icon: <FaReact /> },
     { name: "Next.JS", icon: <SiNextdotjs /> },
     { name: "Figma", icon: <SiFigma /> },
     { name: "Framer", icon: <SiFramer /> },
-    { name: "Photoshop", icon: <SiAdobephotoshop /> },
     { name: "Canva", icon: <SiCanva /> },
-    { name: "Jira", icon: <SiJirasoftware /> },
-    { name: "Postman", icon: <SiPostman /> },
-    { name: "PostgreSQL", icon: <SiPostgresql /> },
-    { name: "MySQL", icon: <SiMysql /> },
   ],
 };
 
