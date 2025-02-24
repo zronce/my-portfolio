@@ -70,7 +70,7 @@ const Home = () => {
             {/* buttons and socials */}
             <div className="flex flex-col xl:flex-row items-center gap-6">
               {/* Download Resume button */}
-              <a href="/assets/Batac-AdrianKyle_RESUME-p.pdf" download>
+              <a href="" download>
                 <Button
                   variant="outline"
                   size="lg"
